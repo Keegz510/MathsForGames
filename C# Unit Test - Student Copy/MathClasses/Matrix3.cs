@@ -82,12 +82,37 @@ namespace MathClasses
             );
         }
 
-        public void SetRotateX(float vec)
+        public void SetRotateX(float rot)
         {
             Matrix3 rotation = new Matrix3(
                 1, 0 ,0,
-                0, (float)Math.Cos(-vec), (float)-Math.Sin(-vec),
-                0, (float)Math.Sin(-vec), (float)Math.Cos(-vec));
+                0, (float)Math.Cos(-rot), (float)-Math.Sin(-rot),
+                0, (float)Math.Sin(-rot), (float)Math.Cos(-rot));
+
+            Matrix3 newMatrix = this * rotation;
+            matrix = newMatrix.matrix;
+        }
+
+        public void SetRotateY(float rot)
+        {
+            Matrix3 rotation = new Matrix3(
+                (float)Math.Cos(-rot), 0, (float)Math.Sin(-rot),
+                0, 1, 0,
+                (float)-Math.Sin(-rot), 0, (float)Math.Cos(-rot));
+
+            Matrix3 newMatrix = this * rotation;
+            matrix = newMatrix.matrix;
+        }
+
+        public void SetRotateZ(float rot)
+        {
+            Matrix3 rotation = new Matrix3(
+                (float)Math.Cos(-rot), (float)-Math.Sin(-rot), 0,
+                (float)Math.Sin(-rot), (float)Math.Cos(-rot), 0,
+                0, 0, 1);
+
+            Matrix3 newMatrix = this * rotation;
+            matrix = newMatrix.matrix;
         }
 
     }
