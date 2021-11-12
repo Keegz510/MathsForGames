@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MathClasses
 {
+
     public class Matrix3
     {
         public float[] matrix = new float[9];                // Matrix array
