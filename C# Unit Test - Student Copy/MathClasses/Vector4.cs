@@ -87,5 +87,13 @@ namespace MathClasses
             );
         }
 
+        // Returns the dot product
+        public float Dot(Vector4 vec)
+        {
+            return (x * vec.x) + (y * vec.y) + (z * vec.z) + (w * vec.w);
+        }
+
+
+
     }
 }
