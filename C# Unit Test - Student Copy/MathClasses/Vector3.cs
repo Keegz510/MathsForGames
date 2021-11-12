@@ -78,5 +78,18 @@ namespace MathClasses
                 vec.z * scale
             );
         }
+
+        public static bool operator ==(Vector3 lhs, Vector3 rhs)
+        {
+            if ((lhs.x == rhs.x) && (lhs.y == rhs.y) && (lhs.z == rhs.z))
+                return true;
+
+            return false;
+        }
+
+        public static bool operator !=(Vector3 lhs, Vector3 rhs)
+        {
+            return !(lhs == rhs);
+        }
     }
 }
