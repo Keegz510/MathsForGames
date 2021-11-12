@@ -91,5 +91,19 @@ namespace MathClasses
         {
             return !(lhs == rhs);
         }
+
+        // Returns the dot product of the vector
+        public float Dot(Vector3 vec)
+        {
+            return (x * vec.x) + (y * vec.y) + (z * vec.z);
+        }
+
+        // Returns the magnitude of the vector
+        public float Magnitude()
+        {
+            return (float)Math.Sqrt((x * x) + (y * y) + (z * z));
+        }
+
+       
     }
 }
