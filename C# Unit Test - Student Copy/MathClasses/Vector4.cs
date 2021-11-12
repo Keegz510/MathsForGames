@@ -8,7 +8,7 @@ namespace MathClasses
 {
     public class Vector4
     {
-        public float x, y, z, w;
+        public float x, y, z, w;                // The vector values
 
         public Vector4()
         {
@@ -17,6 +17,17 @@ namespace MathClasses
             z = 0;
             w = 0;
         }
+
+        // Float constructor
+        public Vector4(float x, float y, float z, float w)
+        {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+            this.w = w;
+        }
+
+
 
     }
 }
