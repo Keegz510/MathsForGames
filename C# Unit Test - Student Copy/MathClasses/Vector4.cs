@@ -27,7 +27,17 @@ namespace MathClasses
             this.w = w;
         }
 
-
+        // Addition of 2 Vector4s
+        public static Vector4 operator +(Vector4 lhs, Vector4 rhs)
+        {
+            return new Vector4
+            (
+                lhs.x + rhs.x,
+                lhs.y + rhs.y,
+                lhs.z + rhs.z,
+                lhs.w + rhs.w
+            );
+        }
 
     }
 }
