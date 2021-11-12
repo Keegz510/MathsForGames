@@ -112,6 +112,16 @@ namespace MathClasses
             z /= Magnitude();
         }
 
+        public Vector3 GetNormalized()
+        {
+            return new Vector3
+            (
+                x / Magnitude(),
+                y / Magnitude(),
+                z / Magnitude()
+            );
+        }
+
         
     }
 }
