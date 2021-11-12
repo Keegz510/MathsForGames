@@ -115,5 +115,17 @@ namespace MathClasses
             matrix = newMatrix.matrix;
         }
 
+        public Matrix3 Transpose()
+        {
+            Matrix3 transposed = new Matrix3();
+            for (int i = 0; i < 9; ++i)
+            {
+                transposed.matrix[i] = matrix[(i % 3) * 3 + (int)(i / 3)];
+            }
+
+            return transposed;
+
+        }
+
     }
 }
