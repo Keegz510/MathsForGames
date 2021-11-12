@@ -99,5 +99,23 @@ namespace MathClasses
             return (float)Math.Sqrt((x * x) + (y * y) + (z * z) + (w * w));
         }
 
+        public void Normalize()
+        {
+            x /= Magnitude();
+            y /= Magnitude();
+            z /= Magnitude();
+        }
+
+        public Vector4 GetNomralized()
+        {
+            return new Vector4
+            (
+                x / Magnitude(),
+                y / Magnitude(),
+                z / Magnitude(),
+                0
+            );
+        }
+
     }
 }
