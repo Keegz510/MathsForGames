@@ -61,5 +61,26 @@ namespace MathClasses
             return newMatrix3;          // Return the matrix
         }
 
+
+        public static Vector3 operator *(Matrix3 mat, Vector3 vec)
+        {
+            return new Vector3
+            (
+                mat.m1 * vec.x + mat.m4 * vec.y + mat.m7 * vec.z,
+                mat.m2 * vec.x + mat.m5 * vec.y + mat.m8 * vec.z,
+                mat.m3 * vec.x + mat.m6 * vec.y + mat.m9 * vec.z
+            );
+        }
+
+        public static Vector3 operator *(Vector3 vec, Matrix3 mat)
+        {
+            return new Vector3
+            (
+                mat.m1 * vec.x + mat.m4 * vec.y + mat.m7 * vec.z,
+                mat.m2 * vec.x + mat.m5 * vec.y + mat.m8 * vec.z,
+                mat.m3 * vec.x + mat.m6 * vec.y + mat.m9 * vec.z
+            );
+        }
+
     }
 }
