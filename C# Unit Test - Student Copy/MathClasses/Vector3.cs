@@ -46,7 +46,7 @@ namespace MathClasses
             );
         }
 
-        // Addition of 2 vectors
+        // Multiplication of 2 vectors
         public static Vector3 operator *(Vector3 lhs, Vector3 rhs)
         {
             return new Vector3
@@ -57,5 +57,26 @@ namespace MathClasses
             );
         }
 
+        // Multiplaction of a vector by a scale
+        public static Vector3 operator *(Vector3 vec, float scale)
+        {
+            return new Vector3
+            (
+                vec.x * scale,
+                vec.y * scale,
+                vec.z * scale
+            );
+        }
+
+        // Multiplaction of a vector by a scale
+        public static Vector3 operator *(float scale, Vector3 vec)
+        {
+            return new Vector3
+            (   
+                vec.x * scale,
+                vec.y * scale,
+                vec.z * scale
+            );
+        }
     }
 }
