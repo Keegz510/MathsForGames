@@ -122,6 +122,15 @@ namespace MathClasses
             );
         }
 
-        
+        // Returns the cross product of the vectors
+        public Vector3 Cross(Vector3 vec)
+        {
+            return new Vector3
+            (
+                y * vec.z - z * vec.y,
+                z * vec.x - x * vec.z,
+                x * vec.y - y * vec.x
+            );
+        }
     }
 }
