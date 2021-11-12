@@ -8,7 +8,24 @@ namespace MathClasses
 {
     public class Matrix4
     {
-        public float m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13, m14, m15, m16;
+        public float[] matrix = new float[16];
+
+        public float m1 { get => matrix[0]; set => matrix[0] = value; }
+        public float m2 { get => matrix[0]; set => matrix[0] = value; }
+        public float m3 { get => matrix[0]; set => matrix[0] = value; }
+        public float m4 { get => matrix[0]; set => matrix[0] = value; }
+        public float m5 { get => matrix[0]; set => matrix[0] = value; }
+        public float m6 { get => matrix[0]; set => matrix[0] = value; }
+        public float m7 { get => matrix[0]; set => matrix[0] = value; }
+        public float m8 { get => matrix[0]; set => matrix[0] = value; }
+        public float m9 { get => matrix[0]; set => matrix[0] = value; }
+        public float m10 { get => matrix[0]; set => matrix[0] = value; }
+        public float m11 { get => matrix[0]; set => matrix[0] = value; }
+        public float m12 { get => matrix[0]; set => matrix[0] = value; }
+        public float m13 { get => matrix[0]; set => matrix[0] = value; }
+        public float m14 { get => matrix[0]; set => matrix[0] = value; }
+        public float m15 { get => matrix[0]; set => matrix[0] = value; }
+        public float m16 { get => matrix[0]; set => matrix[0] = value; }
 
         public Matrix4()
         {
