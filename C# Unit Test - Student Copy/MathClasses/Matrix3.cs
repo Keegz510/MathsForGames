@@ -28,7 +28,7 @@ namespace MathClasses
             m7 = 0; m8 = 0; m9 = 1;
         }
 
-        public Matrix3(float m1, float m2, float m3, float m4, float m5, float m6, float m7, float m9)
+        public Matrix3(float m1, float m2, float m3, float m4, float m5, float m6, float m7, float m8 float m9)
         {
             this.m1 = m1; this.m2 = m2; this.m3 = m3;
             this.m4 = m4; this.m5 = m5; this.m6 = m6;
@@ -80,6 +80,14 @@ namespace MathClasses
                 mat.m2 * vec.x + mat.m5 * vec.y + mat.m8 * vec.z,
                 mat.m3 * vec.x + mat.m6 * vec.y + mat.m9 * vec.z
             );
+        }
+
+        public void SetRotateX(float vec)
+        {
+            Matrix3 rotation = new Matrix3(
+                1, 0 ,0,
+                0, (float)Math.Cos(-vec), (float)-Math.Sin(-vec),
+                0, (float)Math.Sin(-vec), (float)Math.Cos(-vec));
         }
 
     }
