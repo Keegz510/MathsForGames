@@ -93,7 +93,11 @@ namespace MathClasses
             return (x * vec.x) + (y * vec.y) + (z * vec.z) + (w * vec.w);
         }
 
-
+        // Returns the magnitude of the vector
+        public float Magnitude()
+        {
+            return (float)Math.Sqrt((x * x) + (y * y) + (z * z) + (w * w));
+        }
 
     }
 }
