@@ -63,5 +63,29 @@ namespace MathClasses
             );
         }
 
+        // Multiplication of a vector by a float
+        public static Vector4 operator *(Vector4 vec, float scale)
+        {
+            return new Vector4
+            (
+                vec.x * scale,
+                vec.y * scale,
+                vec.z * scale,
+                vec.w * scale
+            );
+        }
+
+        // Multiplication of a vector by a float
+        public static Vector4 operator *(float scale, Vector4 vec)
+        {
+            return new Vector4
+            (
+                vec.x * scale,
+                vec.y * scale,
+                vec.z * scale,
+                vec.w * scale
+            );
+        }
+
     }
 }
