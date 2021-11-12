@@ -117,5 +117,16 @@ namespace MathClasses
             );
         }
 
+        public Vector4 Cross(Vector4 vec)
+        {
+            return new Vector4
+            (
+                (y * vec.z) - (z * vec.y),
+                (z * vec.x) - (x * vec.z),
+                (x * vec.w) - (y * vec.x),
+                0
+            );
+        }
+
     }
 }
