@@ -40,7 +40,26 @@ namespace MathClasses
             matrix = m;
         }
 
-        
+        // Multiplication of 2 matrices
+        public static Matrix3 operator *(Matrix3 lhs, Matrix3 rhs)
+        {
+            Matrix3 newMatrix3 = new Matrix3(new float[9]);             // Initialize a zero'd matrix
+            int matrixDim = 3;              // Define the dimension of the matrix
+
+            for(int i = 0; i < matrixDim; ++i)          // Foreach column
+            {
+                for(int j = 0; j < matrixDim; ++j)      // Foreach row
+                {
+                    for(int k = 0; k < matrixDim; ++k)          // Foreach term
+                    {
+                        // Multiply each term accoardingly
+                        newMatrix3.matrix[i * matrixDim + j] += lhs.matrix[j * matrixDim * k] * rhs.matrix[i * matrixDim + k]; 
+                    }
+                }
+            }
+
+            return newMatrix3;          // Return the matrix
+        }
 
     }
 }
