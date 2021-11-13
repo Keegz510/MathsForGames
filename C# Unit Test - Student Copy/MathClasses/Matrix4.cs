@@ -11,21 +11,21 @@ namespace MathClasses
         public float[] matrix = new float[16];
 
         public float m1 { get => matrix[0]; set => matrix[0] = value; }
-        public float m2 { get => matrix[0]; set => matrix[0] = value; }
-        public float m3 { get => matrix[0]; set => matrix[0] = value; }
-        public float m4 { get => matrix[0]; set => matrix[0] = value; }
-        public float m5 { get => matrix[0]; set => matrix[0] = value; }
-        public float m6 { get => matrix[0]; set => matrix[0] = value; }
-        public float m7 { get => matrix[0]; set => matrix[0] = value; }
-        public float m8 { get => matrix[0]; set => matrix[0] = value; }
-        public float m9 { get => matrix[0]; set => matrix[0] = value; }
-        public float m10 { get => matrix[0]; set => matrix[0] = value; }
-        public float m11 { get => matrix[0]; set => matrix[0] = value; }
-        public float m12 { get => matrix[0]; set => matrix[0] = value; }
-        public float m13 { get => matrix[0]; set => matrix[0] = value; }
-        public float m14 { get => matrix[0]; set => matrix[0] = value; }
-        public float m15 { get => matrix[0]; set => matrix[0] = value; }
-        public float m16 { get => matrix[0]; set => matrix[0] = value; }
+        public float m2 { get => matrix[1]; set => matrix[1] = value; }
+        public float m3 { get => matrix[2]; set => matrix[2] = value; }
+        public float m4 { get => matrix[3]; set => matrix[3] = value; }
+        public float m5 { get => matrix[4]; set => matrix[4] = value; }
+        public float m6 { get => matrix[5]; set => matrix[5] = value; }
+        public float m7 { get => matrix[6]; set => matrix[6] = value; }
+        public float m8 { get => matrix[7]; set => matrix[7] = value; }
+        public float m9 { get => matrix[8]; set => matrix[8] = value; }
+        public float m10 { get => matrix[9]; set => matrix[9] = value; }
+        public float m11 { get => matrix[10]; set => matrix[10] = value; }
+        public float m12 { get => matrix[0]; set => matrix[11] = value; }
+        public float m13 { get => matrix[0]; set => matrix[12] = value; }
+        public float m14 { get => matrix[0]; set => matrix[13] = value; }
+        public float m15 { get => matrix[0]; set => matrix[14] = value; }
+        public float m16 { get => matrix[0]; set => matrix[15] = value; }
 
         public Matrix4()
         {
