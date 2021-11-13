@@ -35,5 +35,24 @@ namespace MathClasses
             m13= 0; m14= 0; m15= 0; m16= 1;
         }
 
+        public Matrix4(float mm1, float mm2, float mm3, float mm4, float mm5, float mm6, float mm7, float mm8 float mm9, float mm10, float mm11, float mm12,
+            float mm13, float mm14, float mm15, float mm16)
+        {
+            m1 = mm1; m2 = mm2; m3 = mm3; m4 = mm4;
+            m5 = mm5; m6 = mm6; m7 = mm7; m8 = mm8;
+            m9 = mm9; m10 = mm10; m11 = mm11; m12 = mm12;
+            m13 = mm13; m14 = mm14; m15 = mm15; m16 = mm16;
+        }
+
+        public Matrix4(float[] m)
+        {
+            matrix = m;
+        }
+
+        public Matrix4(Matrix4 m)
+        {
+            matrix = m.matrix;
+        }
+
     }
 }
