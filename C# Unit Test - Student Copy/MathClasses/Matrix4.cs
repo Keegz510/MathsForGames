@@ -84,5 +84,56 @@ namespace MathClasses
 
         }
 
+        public void SetRotateX(float radians)
+        {
+            Matrix4 rotation = new Matrix4
+            (
+                1, 0, 0, 0,
+                0, (float)Math.Cos(-radians), (float)-Math.Sin(-radians), 0,
+                0, (float)Math.Sin(-radians), (float)Math.Cos(-radians), 0,
+                0, 0, 0, 1
+            );
+
+            Matrix4 newMatrix = this * rotation;
+            matrix = newMatrix.matrix;
+        }
+
+        public void SetRotateY(float radians)
+        {
+            Matrix4 rotation = new Matrix4
+            (
+                (float)Math.Cos(-radians), 0, (float)Math.Sin(-radians), 0,
+                0, 1, 0, 0,
+                (float)-Math.Sin(-radians), 0, (float)Math.Cos(-radians), 0,
+                0, 0, 0, 1
+            );
+
+            Matrix4 newMatrix = this * rotation;
+            matrix = newMatrix.matrix;
+        }
+
+        public void SetRotateZ(float radians)
+        {
+            Matrix4 rotation = new Matrix4
+            (
+                (float)Math.Cos(-radians), (float)-Math.Sin(-radians), 0, 0,
+                (float)Math.Sin(-radians), (float)Math.Cos(-radians), 0, 0,
+                0, 0, 1, 0,
+                0, 0, 0, 1
+            );
+        }
+
+        public Matrix4 Transpose()
+        {
+            Matrix4 transposed = new Matrix4();
+
+            for(int i = 0; i < 16; i++)
+            {
+                transposed.matrix[i] = matrix[(i % 4) * 4 + (int)(i / 4)];
+            }
+
+            return transposed;
+        }
+
     }
 }
