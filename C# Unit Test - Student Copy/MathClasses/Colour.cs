@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace MathClasses
 {
     [Flags]
-    public enum Bitmask : uint
+    public enum Bitmask : UInt32
     {
         RED = 4278190080,
         GREEN = 16711680,
@@ -22,6 +22,11 @@ namespace MathClasses
         public Colour()
         {
             colour = 0;
+        }
+
+        public Colour(byte red, byte green, byte blue, byte alpha)
+        {
+            colour = (UInt32)(red << 24) + (UInt32)(green << 16) + (UInt32)(blue << 8) + (UInt32)alpha;
         }
 
     }
