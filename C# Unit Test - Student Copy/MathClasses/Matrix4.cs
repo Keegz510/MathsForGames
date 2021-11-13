@@ -54,5 +54,22 @@ namespace MathClasses
             matrix = m.matrix;
         }
 
+        public static Matrix4 operator *(Matrix4 lhs, Matrix4 rhs)
+        {
+            Matrix4 newMatrix = new Matrix4();
+            int matrixDim = 4;                  // Dimension of the matrix
+
+            for(int i = 0; i < matrixDim; i++)
+            {
+                for(int j = 0; j < matrixDim; j++)
+                {
+                    for(int k = 0; k < matrixDim; k++)
+                    {
+                        newMatrix.matrix[i * matrixDim + j] += lhs.matrix[j * matrixDim * k] * rhs.matrix[i * matrixDim + k];
+                    }
+                }
+            }
+        }
+
     }
 }
