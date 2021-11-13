@@ -31,6 +31,7 @@ namespace MathClasses
 
         public byte GetRed() => (byte)((colour & (UInt32)Bitmask.RED) >> 24);
         public void SetRed(byte red) => colour = (UInt32)((colour & ~(UInt32)Bitmask.RED) | (UInt32)(red << 24));
-        public byte GetGreen() =>
+        public byte GetGreen() => (byte)((colour & (UInt32)Bitmask.GREEN) >> 16);
+        public void SetGreen(byte green) => colour = (UInt32)((colour & ~(UInt32)Bitmask.GREEN) | (UInt32)(green << 16));
     }
 }
