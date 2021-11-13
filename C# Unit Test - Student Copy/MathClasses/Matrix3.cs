@@ -29,7 +29,7 @@ namespace MathClasses
             m7 = 0; m8 = 0; m9 = 1;
         }
 
-        public Matrix3(float m1, float m2, float m3, float m4, float m5, float m6, float m7, float m8 float m9)
+        public Matrix3(float m1, float m2, float m3, float m4, float m5, float m6, float m7, float m8, float m9)
         {
             this.m1 = m1; this.m2 = m2; this.m3 = m3;
             this.m4 = m4; this.m5 = m5; this.m6 = m6;
