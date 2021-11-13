@@ -71,5 +71,18 @@ namespace MathClasses
             }
         }
 
+        public static Vector4 operator *(Matrix4 mat, Vector4 vec)
+        {
+            return new Vector4
+            (
+                (mat.m1 * vec.x) + (mat.m5 * vec.y) + (mat.m9 * vec.z) + (mat.m13 * vec.w),
+                (mat.m2 * vec.x) + (mat.m6 * vec.y) + (mat.m10 * vec.z) + (mat.m14 * vec.w),
+                (mat.m3 * vec.x) + (mat.m7 * vec.y) + (mat.m11 * vec.z) + (mat.m15 * vec.w),
+                (mat.m4 * vec.x) + (mat.m8 * vec.y) + (mat.m12 * vec.z) + (mat.m16 * vec.w)
+            );
+
+
+        }
+
     }
 }
