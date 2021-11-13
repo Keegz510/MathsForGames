@@ -21,7 +21,7 @@ namespace MathClasses
         public float m8 { get => matrix[7]; set => matrix[7] = value; }
         public float m9 { get => matrix[8]; set => matrix[8] = value; }
 
-
+        
         public Matrix3()
         {
             m1 = 1; m2 = 0; m3 = 0;
@@ -44,22 +44,15 @@ namespace MathClasses
         // Multiplication of 2 matrices
         public static Matrix3 operator *(Matrix3 lhs, Matrix3 rhs)
         {
-            Matrix3 newMatrix3 = new Matrix3(new float[9]);             // Initialize a zero'd matrix
-            int matrixDim = 3;              // Define the dimension of the matrix
+            Matrix3 transposed = rhs.Transpose();
+            Matrix3 newMatrix = new Matrix3();
 
-            for(int i = 0; i < matrixDim; ++i)          // Foreach column
+            for(int i = 0; i < 9; ++i)
             {
-                for(int j = 0; j < matrixDim; ++j)      // Foreach row
-                {
-                    for(int k = 0; k < matrixDim; ++k)          // Foreach term
-                    {
-                        // Multiply each term accoardingly
-                        newMatrix3.matrix[i * matrixDim + j] += lhs.matrix[j * matrixDim * k] * rhs.matrix[i * matrixDim + k]; 
-                    }
-                }
+                newMatrix.matrix[i] = lhs.matrix[i] * transposed.matrix[i];
             }
 
-            return newMatrix3;          // Return the matrix
+            return newMatrix;
         }
 
 
@@ -83,33 +76,32 @@ namespace MathClasses
             );
         }
 
-        public void SetRotateX(float rot)
+        public void SetRotateX(float radians)
         {
             Matrix3 rotation = new Matrix3(
                 1, 0 ,0,
-                0, (float)Math.Cos(-rot), (float)-Math.Sin(-rot),
-                0, (float)Math.Sin(-rot), (float)Math.Cos(-rot));
+                0, (float)Math.Cos(radians), (float)-Math.Sin(radians),
+                0, (float)Math.Sin(radians), (float)Math.Cos(radians));
 
-            Matrix3 newMatrix = this * rotation;
-            matrix = newMatrix.matrix;
+            matrix = this.matrix * rotation;
         }
 
-        public void SetRotateY(float rot)
+        public void SetRotateY(float radians)
         {
             Matrix3 rotation = new Matrix3(
-                (float)Math.Cos(-rot), 0, (float)Math.Sin(-rot),
+                (float)Math.Cos(radians), 0, (float)Math.Sin(radians),
                 0, 1, 0,
-                (float)-Math.Sin(-rot), 0, (float)Math.Cos(-rot));
+                (float)-Math.Sin(radians), 0, (float)Math.Cos(radians));
 
             Matrix3 newMatrix = this * rotation;
             matrix = newMatrix.matrix;
         }
 
-        public void SetRotateZ(float rot)
+        public void SetRotateZ(float radians)
         {
             Matrix3 rotation = new Matrix3(
-                (float)Math.Cos(-rot), (float)-Math.Sin(-rot), 0,
-                (float)Math.Sin(-rot), (float)Math.Cos(-rot), 0,
+                (float)Math.Cos(radians), (float)-Math.Sin(radians), 0,
+                (float)Math.Sin(radians), (float)Math.Cos(radians), 0,
                 0, 0, 1);
 
             Matrix3 newMatrix = this * rotation;
@@ -119,10 +111,10 @@ namespace MathClasses
         public Matrix3 Transpose()
         {
             Matrix3 transposed = new Matrix3();
-            for (int i = 0; i < 9; ++i)
-            {
-                transposed.matrix[i] = matrix[(i % 3) * 3 + (int)(i / 3)];
-            }
+
+            transposed.matrix[0] = matrix[0]; transposed.matrix[1] = matrix[3]; transposed.matrix[2] = matrix[6];
+            transposed.matrix[3] = matrix[1]; transposed.matrix[4] = matrix[4]; transposed.matrix[5] = matrix[7];
+            transposed.matrix[6] = matrix[2]; transposed.matrix[7] = matrix[5]; transposed.matrix[8] = matrix[8];
 
             return transposed;
 
