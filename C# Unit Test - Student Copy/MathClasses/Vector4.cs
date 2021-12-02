@@ -119,13 +119,15 @@ namespace MathClasses
 
         public Vector4 Cross(Vector4 vec)
         {
-            return new Vector4
-            (
-                (y * vec.z) - (z * vec.y),
-                (z * vec.x) - (x * vec.z),
-                (x * vec.w) - (y * vec.x),
-                0
-            );
+            Vector4 newVector = new Vector4
+            {
+                x = (y * vec.z) - (z * vec.y),
+                y = (z * vec.x) - (x * vec.z),
+                z = (x * vec.y) - (y * vec.x),
+                w = 0
+            };
+
+            return newVector;
         }
 
     }
