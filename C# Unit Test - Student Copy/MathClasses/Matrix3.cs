@@ -46,11 +46,12 @@ namespace MathClasses
         {
             Matrix3 transposed = rhs.Transpose();
             Matrix3 newMatrix = new Matrix3();
-
-            for(int i = 0; i < 9; ++i)
+            
+            for (int i = 0; i < 9; ++i)
             {
                 newMatrix.matrix[i] = lhs.matrix[i] * transposed.matrix[i];
             }
+            
 
             return newMatrix;
         }
@@ -80,10 +81,11 @@ namespace MathClasses
         {
             Matrix3 rotation = new Matrix3(
                 1, 0 ,0,
-                0, (float)Math.Cos(radians), (float)-Math.Sin(radians),
-                0, (float)Math.Sin(radians), (float)Math.Cos(radians));
+                0, (float)Math.Cos(-radians), (float)-Math.Sin(-radians),
+                0, (float)Math.Sin(-radians), (float)Math.Cos(-radians));
 
-            matrix = this.matrix * rotation;
+            Matrix3 newMat = this * rotation;
+            matrix = newMat.matrix;
         }
 
         public void SetRotateY(float radians)
@@ -112,9 +114,9 @@ namespace MathClasses
         {
             Matrix3 transposed = new Matrix3();
 
-            transposed.matrix[0] = matrix[0]; transposed.matrix[1] = matrix[3]; transposed.matrix[2] = matrix[6];
-            transposed.matrix[3] = matrix[1]; transposed.matrix[4] = matrix[4]; transposed.matrix[5] = matrix[7];
-            transposed.matrix[6] = matrix[2]; transposed.matrix[7] = matrix[5]; transposed.matrix[8] = matrix[8];
+            transposed.matrix[0] = m1; transposed.matrix[1] = m4; transposed.matrix[2] = m7;
+            transposed.matrix[3] = m2 ; transposed.matrix[4] = m5; transposed.matrix[5] = m8;
+            transposed.matrix[6] = m3; transposed.matrix[7] = m6; transposed.matrix[8] = m9;
 
             return transposed;
 

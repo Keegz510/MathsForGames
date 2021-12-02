@@ -101,9 +101,10 @@ namespace MathClasses
 
         public void Normalize()
         {
-            x /= Magnitude();
-            y /= Magnitude();
-            z /= Magnitude();
+            float mag = Magnitude();
+            x /= mag;
+            y /= mag;
+            z /= mag;
         }
 
         public Vector4 GetNomralized()

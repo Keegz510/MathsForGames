@@ -56,18 +56,12 @@ namespace MathClasses
 
         public static Matrix4 operator *(Matrix4 lhs, Matrix4 rhs)
         {
+            Matrix4 transposed = rhs.Transpose();
             Matrix4 newMatrix = new Matrix4();
-            int matrixDim = 4;                  // Dimension of the matrix
-
-            for(int i = 0; i < matrixDim; i++)
+            
+            for(int i = 0; i < 16; ++i)
             {
-                for(int j = 0; j < matrixDim; j++)
-                {
-                    for(int k = 0; k < matrixDim; k++)
-                    {
-                        newMatrix.matrix[i * matrixDim + j] += lhs.matrix[j * matrixDim * k] * rhs.matrix[i * matrixDim + k];
-                    }
-                }
+                newMatrix.matrix[i] = lhs.matrix[i] * transposed.matrix[i];
             }
 
             return newMatrix;
@@ -129,10 +123,11 @@ namespace MathClasses
         {
             Matrix4 transposed = new Matrix4();
 
-            for(int i = 0; i < 16; i++)
-            {
-                transposed.matrix[i] = matrix[(i % 4) * 4 + (int)(i / 4)];
-            }
+            transposed.m1 = m1; transposed.m2 = m5; transposed.m3 = m9; transposed.m4 = m13;
+            transposed.m5 = m2; transposed.m6 = m6; transposed.m7 = m10; transposed.m8 = m14;
+            transposed.m9 = m3; transposed.m10 = m7; transposed.m11 = m11; transposed.m12 = m15;
+            transposed.m13 = m4; transposed.m14 = m8; transposed.m15 = m12; transposed.m16 = m15;
+            
 
             return transposed;
         }
