@@ -95,30 +95,30 @@ namespace MathClasses
         {
             Matrix3 rotation = new Matrix3(
                 1, 0 ,0,
-                0, (float)Math.Cos(-radians), (float)-Math.Sin(-radians),
-                0, (float)Math.Sin(-radians), (float)Math.Cos(-radians));
+                0, (float)Math.Cos(radians), (float)-Math.Sin(radians),
+                0, (float)Math.Sin(radians), (float)Math.Cos(radians));
 
-            Set(rotation);
+            Set(this * rotation);
         }
 
         public void SetRotateY(float radians)
         {
             Matrix3 rotation = new Matrix3(
-                (float)Math.Cos(-radians), 0, (float)Math.Sin(-radians),
+                (float)Math.Cos(radians), 0, (float)Math.Sin(radians),
                 0, 1, 0,
-                (float)-Math.Sin(-radians), 0, (float)Math.Cos(-radians));
+                (float)-Math.Sin(radians), 0, (float)Math.Cos(radians));
 
-            Set(rotation);
+            Set(this * rotation);
         }
 
         public void SetRotateZ(float radians)
         {
             Matrix3 rotation = new Matrix3(
-                (float)Math.Cos(-radians), (float)-Math.Sin(-radians), 0,
-                (float)Math.Sin(-radians), (float)Math.Cos(-radians), 0,
+                (float)Math.Cos(radians), (float)-Math.Sin(radians), 0,
+                (float)Math.Sin(radians), (float)Math.Cos(radians), 0,
                           0,                     0,                 1);
 
-            Set(rotation);
+            Set(this * rotation);
         }
 
         public Matrix3 Transpose()
