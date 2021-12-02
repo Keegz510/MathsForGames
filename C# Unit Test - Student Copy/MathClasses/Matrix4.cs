@@ -54,6 +54,14 @@ namespace MathClasses
             matrix = m.matrix;
         }
 
+        public void Set(Matrix4 m)
+        {
+            this.m1 = m.m1; this.m2 = m.m2; this.m3 = m.m3; this.m4 = m.m4;
+            this.m5 = m.m5; this.m6 = m.m6; this.m7 = m.m7; this.m8 = m.m8;
+            this.m9 = m.m9; this.m10 = m.m10; this.m11 = m.m11; this.m12 = m.m12;
+            this.m13 = m.m13; this.m14 = m.m14; this.m15 = m.m14; this.m16 = m.m16;
+        }
+
         public static Matrix4 operator *(Matrix4 lhs, Matrix4 rhs)
         {
             Matrix4 transposed = rhs.Transpose();
@@ -90,8 +98,7 @@ namespace MathClasses
                 0, 0, 0, 1
             );
 
-            Matrix4 newMatrix = this * rotation;
-            matrix = newMatrix.matrix;
+            Set(rotation);
         }
 
         public void SetRotateY(float radians)
@@ -104,8 +111,7 @@ namespace MathClasses
                 0, 0, 0, 1
             );
 
-            Matrix4 newMatrix = this * rotation;
-            matrix = newMatrix.matrix;
+            Set(rotation);
         }
 
         public void SetRotateZ(float radians)
@@ -117,6 +123,8 @@ namespace MathClasses
                 0, 0, 1, 0,
                 0, 0, 0, 1
             );
+
+            Set(rotation);
         }
 
         public Matrix4 Transpose()
