@@ -21,11 +21,11 @@ namespace MathClasses
         public float m9 { get => matrix[8]; set => matrix[8] = value; }
         public float m10 { get => matrix[9]; set => matrix[9] = value; }
         public float m11 { get => matrix[10]; set => matrix[10] = value; }
-        public float m12 { get => matrix[0]; set => matrix[11] = value; }
-        public float m13 { get => matrix[0]; set => matrix[12] = value; }
-        public float m14 { get => matrix[0]; set => matrix[13] = value; }
-        public float m15 { get => matrix[0]; set => matrix[14] = value; }
-        public float m16 { get => matrix[0]; set => matrix[15] = value; }
+        public float m12 { get => matrix[11]; set => matrix[11] = value; }
+        public float m13 { get => matrix[12]; set => matrix[12] = value; }
+        public float m14 { get => matrix[13]; set => matrix[13] = value; }
+        public float m15 { get => matrix[14]; set => matrix[14] = value; }
+        public float m16 { get => matrix[15]; set => matrix[15] = value; }
 
         public Matrix4()
         {
@@ -62,17 +62,29 @@ namespace MathClasses
             this.m13 = m.m13; this.m14 = m.m14; this.m15 = m.m14; this.m16 = m.m16;
         }
 
-        public static Matrix4 operator *(Matrix4 lhs, Matrix4 rhs)
+        // Multiple Matrices
+        public static Matrix4 operator *(Matrix4 a, Matrix4 b)
         {
-            Matrix4 transposed = rhs.Transpose();
-            Matrix4 newMatrix = new Matrix4();
-            
-            for(int i = 0; i < 16; ++i)
-            {
-                newMatrix.matrix[i] = lhs.matrix[i] * transposed.matrix[i];
-            }
+            return new Matrix4(
+                (a.m1 * b.m1) + (a.m5 * b.m2) + (a.m9 * b.m3) + (a.m13 * b.m4),
+                (a.m2 * b.m1) + (a.m6 * b.m2) + (a.m10 * b.m3) + (a.m14 * b.m4),
+                (a.m3 * b.m1) + (a.m7 * b.m2) + (a.m11 * b.m3) + (a.m15 * b.m4),
+                (a.m4 * b.m1) + (a.m8 * b.m2) + (a.m12 * b.m3) + (a.m16 * b.m4),
 
-            return newMatrix;
+                (a.m1 * b.m5) + (a.m5 * b.m6) + (a.m9 * b.m7) + (a.m13 * b.m8),
+                (a.m2 * b.m5) + (a.m6 * b.m6) + (a.m10 * b.m7) + (a.m14 * b.m8),
+                (a.m3 * b.m5) + (a.m7 * b.m6) + (a.m11 * b.m7) + (a.m15 * b.m8),
+                (a.m4 * b.m5) + (a.m8 * b.m6) + (a.m12 * b.m7) + (a.m16 * b.m8),
+
+                (a.m1 * b.m9) + (a.m5 * b.m10) + (a.m9 * b.m11) + (a.m13 * b.m12),
+                (a.m2 * b.m9) + (a.m6 * b.m10) + (a.m10 * b.m11) + (a.m14 * b.m12),
+                (a.m3 * b.m9) + (a.m7 * b.m10) + (a.m11 * b.m11) + (a.m15 * b.m12),
+                (a.m4 * b.m9) + (a.m8 * b.m10) + (a.m12 * b.m11) + (a.m16 * b.m12),
+
+                (a.m1 * b.m13) + (a.m5 * b.m14) + (a.m9 * b.m15) + (a.m13 * b.m16),
+                (a.m2 * b.m13) + (a.m6 * b.m14) + (a.m10 * b.m15) + (a.m14 * b.m16),
+                (a.m3 * b.m13) + (a.m7 * b.m14) + (a.m11 * b.m15) + (a.m15 * b.m16),
+                (a.m4 * b.m13) + (a.m8 * b.m14) + (a.m12 * b.m15) + (a.m16 * b.m16));
         }
 
         public static Vector4 operator *(Matrix4 mat, Vector4 vec)
