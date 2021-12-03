@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using static Raylib_cs.Raylib;
 
 namespace TankGame
 {
@@ -8,7 +9,16 @@ namespace TankGame
     {
         public static void Main()
         {
-            Console.WriteLine("Hello World");
+            InitWindow(600, 400, "AIE Graphical Test");
+            Game game = new Game();
+            game.Init();
+
+            while(!WindowShouldClose())
+            {
+                game.Update();
+            }
+
+            CloseWindow();
         }
     }
 }
