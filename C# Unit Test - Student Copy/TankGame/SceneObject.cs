@@ -10,6 +10,7 @@ namespace TankGame
 {
     public class SceneObject
     {
+        #region Parenting
         /// Reference to the parent object of this obejct
         protected SceneObject parent;
         /// returns the parent object
@@ -17,7 +18,19 @@ namespace TankGame
         /// List of children linked to this object
         protected List<SceneObject> children = new List<SceneObject>();
         /// Returns the children of this ohbject
-        public List<SceneObject> Children { get => children; }                      
+        public List<SceneObject> Children { get => children; }
+        #endregion
+
+        #region Object Transform
+
+        /// Reference to the local transform
+        protected Matrix3 localTransform = new Matrix3();
+        public Matrix3 LocalTransform { get => localTransform;  }
+        /// Reference to the global transform
+        protected Matrix3 globalTransform = new Matrix3();
+        public Matrix3 GlobalTransform { get => globalTransform; }
+
+        #endregion
 
         /// <summary>
         /// Default constructor
