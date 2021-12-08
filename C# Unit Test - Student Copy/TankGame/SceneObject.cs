@@ -147,5 +147,25 @@ namespace TankGame
                 child.PhysicsUpdate();
             }
         }
+
+        public void GlobalTransformUpdate()
+        {
+            if (!bIsDirty)
+                return;
+
+            bIsDirty = false;
+            if(Parent != null)
+            {
+                GlobalTransform = Parent.GlobalTransform * localTransform;
+            }
+
+            if(Children.Count > 0)
+            {
+                foreach(var child in Children)
+                {
+                    child.GlobalTransformUpdate();
+                }
+            }
+        }
     }
 }
