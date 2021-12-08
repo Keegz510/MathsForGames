@@ -35,6 +35,17 @@ namespace TankGame
         /// Positional Properties
         protected Matrix3 localTransform = new Matrix3();           // The local position of this game object
         public Matrix3 GlobalTransform = new Matrix3();             // The global position of this game object
+        // Returns an updated version of the localTransform
+        protected Matrix3 LocalTransform                                        
+        {
+            get
+            {
+                return
+                    new Matrix3(1, 0, 0, 0, 1, 0, Position.x, Position.y, 1) *
+                    Globals.RotationMatrix2D(Rotation) *
+                    new Matrix3(Scale, 0, 0, 0, Scale, 0, 0, 0, 1);
+            }
+        }
         public float GlobalRotation
         {
             get => (float)Math.Atan2(GlobalTransform.m2, GlobalTransform.m1);
@@ -87,6 +98,19 @@ namespace TankGame
         public SceneObject()
         { }
 
+        public SceneObject(Vector3 pos, Vector3 vel, float rot, Texture2D sprite, SceneObject parent)
+        {
+            Position = pos;
+            Velocity = vel;
+            Rotation = rot;
+            localTransform = LocalTransform;
+            GlobalTransform = parent.GlobalTransform * localTransform;
+            this.sprite = sprite;
+            Parent = parent;
+
+            Globals.AllObjectsInScene.Add(this);
+            
+        }
         public void MakeDirty()
         {
             if (bIsDirty) return;
