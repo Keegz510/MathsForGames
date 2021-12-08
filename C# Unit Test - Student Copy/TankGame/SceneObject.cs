@@ -11,19 +11,20 @@ namespace TankGame
     public class SceneObject
     {
         /// Reference to the parent object
+        private SceneObject parent;
         public SceneObject Parent
         {
-            get => Parent;
+            get => parent;
             set
             {
-                if (Parent != null)
-                    Parent.Children.Remove(this);
-                
-                Parent = value;
+                if (parent != null)
+                    parent.Children.Remove(this);
+
+                parent = value;
                 if (value == null)
                     return;
 
-                Parent.Children.Add(this);
+                parent.Children.Add(this);
             }
         }
         /// Reference to this game objects children
@@ -196,6 +197,11 @@ namespace TankGame
                 Scale,
                 Color.WHITE
                 );
+
+            foreach(var child in Children)
+            {
+                child.Draw();
+            }
         }
 
         public virtual void Update()
