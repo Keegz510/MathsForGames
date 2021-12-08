@@ -167,5 +167,23 @@ namespace TankGame
                 }
             }
         }
+
+        public void LocalTransformUpdate()
+        {
+            if(!bIsDirty)
+            {
+                return;
+            }
+
+            localTransform = LocalTransform;
+
+            if (Children.Count > 0)
+            {
+                foreach (var child in Children)
+                {
+                    child.LocalTransformUpdate();
+                }
+            }
+        }
     }
 }
