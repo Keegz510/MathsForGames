@@ -24,6 +24,13 @@ namespace TankGame
         }
         public List<SceneObject> Children = new List<SceneObject>();
 
+        /// GRAPHICS
+        public float Scale = 1;
+        public float Rotation = 0;
+        protected Vector3 offset = new Vector3();
+        protected Texture2D sprite;
+
+
         
 
 
