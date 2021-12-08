@@ -11,7 +11,7 @@ namespace TankGame
     {
         public static float DeltaTime;
 
-        public static SceneObject Scene;            /// ROOT SCENE OBJECT
+        public static SceneObject Scene = new SceneObject();            /// ROOT SCENE OBJECT
         public static List<SceneObject> AllObjectsInScene = new List<SceneObject>();
 
         //Returns the 2D rotation matrix of a given angle
