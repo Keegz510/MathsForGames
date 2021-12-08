@@ -18,8 +18,11 @@ namespace TankGame
             {
                 if (Parent != null)
                     Parent.Children.Remove(this);
-
+                
                 Parent = value;
+                if (value == null)
+                    return;
+
                 Parent.Children.Add(this);
             }
         }
@@ -91,6 +94,7 @@ namespace TankGame
         private bool bIsDirty = false;
         private float rotationShift = 0;
         public float RotationShift { set => rotationShift = value; }
+        protected Vector3 accelaration = new Vector3();
 
         
 
@@ -124,6 +128,23 @@ namespace TankGame
             foreach(var child in Children)
             {
                 child.MakeDirty();
+            }
+        }
+
+        public void PhysicsUpdate()
+        {
+            Velocity += accelaration * Globals.DeltaTime;
+            accelaration = new Vector3();
+
+            Position = Velocity * Globals.DeltaTime;
+            Velocity *= (float)Math.Pow(1 - friction, Globals.DeltaTime);
+
+            Rotation += rotationShift * Globals.DeltaTime;
+            rotationShift = 0;
+
+            foreach(var child in Children)
+            {
+                child.PhysicsUpdate();
             }
         }
     }
