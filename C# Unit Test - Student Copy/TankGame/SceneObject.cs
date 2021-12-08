@@ -35,6 +35,15 @@ namespace TankGame
         /// Positional Properties
         protected Matrix3 localTransform = new Matrix3();           // The local position of this game object
         public Matrix3 GlobalTransform = new Matrix3();             // The global position of this game object
+        public float GlobalRotation
+        {
+            get => (float)Math.Atan2(GlobalTransform.m2, GlobalTransform.m1);
+        }
+
+        public Vector3 GlobalPosition
+        {
+            get => new Vector3(GlobalTransform.m7, GlobalTransform.m8, 1);
+        }
 
         /// PHYSICS
         protected Vector3 position = new Vector3(0, 0, 1);          // Reference to the relative position of its parent
@@ -70,6 +79,7 @@ namespace TankGame
         /// UPDATE PROPERTIES
         private bool bIsDirty = false;
         private float rotationShift = 0;
+        public float RotationShift { set => rotationShift = value; }
 
         
 
