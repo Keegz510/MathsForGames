@@ -34,7 +34,7 @@ namespace TankGame
 
         /// Positional Properties
         protected Matrix3 localTransform = new Matrix3();           // The local position of this game object
-        public Matrix3 globalTransform = new Matrix3();             // The global position of this game object
+        public Matrix3 GlobalTransform = new Matrix3();             // The global position of this game object
 
         /// PHYSICS
         protected Vector3 position = new Vector3(0, 0, 1);          // Reference to the relative position of its parent
