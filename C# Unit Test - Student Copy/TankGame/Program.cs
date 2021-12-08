@@ -9,7 +9,7 @@ namespace TankGame
     {
         public static void Main()
         {
-            InitWindow(600, 400, "AIE Graphical Test");
+            InitWindow(1600, 800, "AIE Graphical Test");
             Game game = new Game();
             game.Init();
 
