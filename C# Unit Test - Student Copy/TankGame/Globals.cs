@@ -29,5 +29,10 @@ namespace TankGame
         {
             return new Vector3(distance * (float)-Math.Sin(direction), distance * (float)Math.Cos(direction), 0);
         }
+
+        internal static Vector3 PointOffsetDistDir(float distance, float direction)
+        {
+            return new Vector3(distance * (float)Math.Sin(direction), distance * (float)Math.Cos(direction), 1);
+        }
     }
 }

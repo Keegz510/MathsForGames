@@ -11,6 +11,7 @@ namespace TankGame
 {
     public class TankObject : SceneObject
     {
+        TurretObject turret;
 
 
         /// Movement Settings
@@ -20,12 +21,12 @@ namespace TankGame
         private float TurretSpeed = 1F;                                      //The rate at which the turret turns
 
 
-        public Tank(Vector3 position, Vector3 velocity, float rotation, float turretRot, SceneObject parent)
+        public TankObject(Vector3 position, Vector3 velocity, float rotation, float turretRot, SceneObject parent)
             : base(position, velocity, rotation, parent)
         {
             sprite = LoadTexture("tankBlue_outline.png");
             offset = new Vector3(-sprite.width / 2, -sprite.height / 2, 0);       //Set the offset as specified
-            //turret = new Turret(new MFG.Vector3(0, 0, 1), 0, sprites, this);        //Assign it a new turret
+            turret = new TurretObject(new Vector3(0, 0, 1), 0, this);        //Assign it a new turret
             friction = 0.9F;                                                        //Set the friction
         }
 
@@ -46,6 +47,14 @@ namespace TankGame
 
         public float TurnLeft() => RotationShift = -TurnSpeed;
         public float TurnRight() => RotationShift = TurnSpeed;
+
+        public float TurretLeft() => turret.RotationShift = -TurretSpeed;
+        public float TurretRight() => turret.RotationShift = TurretSpeed;
+
+        public void Fire()
+        {
+            // TODO
+        }
 
     }
 }
