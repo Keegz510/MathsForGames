@@ -22,5 +22,7 @@ namespace TankGame
                 (float)Math.Sin(-v), (float)Math.Cos(-v), 0,
                  0, 0, 1);
         }
+
+        public static System.Numerics.Vector2 Vec3toVec2(Vector3 vec) => new System.Numerics.Vector2(vec.x, vec.y);
     }
 }
