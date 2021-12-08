@@ -102,14 +102,13 @@ namespace TankGame
         public SceneObject()
         { }
 
-        public SceneObject(Vector3 pos, Vector3 vel, float rot, Texture2D sprite, SceneObject parent)
+        public SceneObject(Vector3 pos, Vector3 vel, float rot, SceneObject parent)
         {
             Position = pos;
             Velocity = vel;
             Rotation = rot;
             localTransform = LocalTransform;
             GlobalTransform = parent.GlobalTransform * localTransform;
-            this.sprite = sprite;
             Parent = parent;
 
             Globals.AllObjectsInScene.Add(this);
@@ -184,6 +183,32 @@ namespace TankGame
                     child.LocalTransformUpdate();
                 }
             }
+        }
+
+        public void Draw()
+        {
+
+            DrawTextureEx(
+                sprite,
+                new System.Numerics.Vector2(GlobalTransform.m7, GlobalTransform.m8) +
+                Globals.Vec3toVec2(Globals.RotationMatrix2D(GlobalRotation) * offset * Scale),
+                GlobalRotation * (float)(180.0f / Math.PI),
+                Scale,
+                Color.WHITE
+                );
+        }
+
+        public virtual void Update()
+        {
+            foreach(var child in Children)
+            {
+                child.Update();
+            }
+        }
+
+        private float GetDirectionTo(SceneObject so)
+        {
+            return (float)Math.Atan2(so.Position.y - Position.y, so.Position.x - Position.x) - (float)Math.PI / 2;
         }
     }
 }

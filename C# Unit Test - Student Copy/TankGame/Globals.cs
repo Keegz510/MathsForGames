@@ -24,5 +24,10 @@ namespace TankGame
         }
 
         public static System.Numerics.Vector2 Vec3toVec2(Vector3 vec) => new System.Numerics.Vector2(vec.x, vec.y);
+
+        public static Vector3 DistanceDirectionToXY(float distance, float direction)
+        {
+            return new Vector3(distance * (float)-Math.Sin(direction), distance * (float)Math.Cos(direction), 0);
+        }
     }
 }
