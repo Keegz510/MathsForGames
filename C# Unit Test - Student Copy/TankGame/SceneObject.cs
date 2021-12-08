@@ -47,7 +47,7 @@ namespace TankGame
             {
                 if (value == position) return;
 
-                // TODO: Make Dirty
+                MakeDirty();
                 position = value;
             }
         }
@@ -64,12 +64,30 @@ namespace TankGame
                 }
             }
         }
-        
+
+        /// UPDATE PROPERTIES
+        private bool bIsDirty = false;
 
         
 
 
         public SceneObject()
         { }
+
+        public void MakeDirty()
+        {
+            if (bIsDirty) return;
+
+            bIsDirty = true;
+            if(Parent != null)
+            {
+                Parent.MakeDirty();
+            }
+
+            foreach(var child in Children)
+            {
+                child.MakeDirty();
+            }
+        }
     }
 }
