@@ -30,6 +30,41 @@ namespace TankGame
         protected Vector3 offset = new Vector3();
         protected Texture2D sprite;
 
+        /// Positional Properties
+        protected Matrix3 localTransform = new Matrix3();
+        public Matrix3 globalTransform = new Matrix3();
+
+        /// PHYSICS
+        protected Vector3 position = new Vector3(0, 0, 1);
+        protected Vector3 velocity = new Vector3();
+        protected float friction = 0.9f;
+        protected float minSpeed = 0.01f;
+
+        public Vector3 Position
+        {
+            get => position;
+            set
+            {
+                if (value == position) return;
+
+                // TODO: Make Dirty
+                position = value;
+            }
+        }
+
+        public Vector3 Velocity
+        {
+            get => velocity;
+            set
+            {
+                velocity = value;
+                if(velocity.Magnitude() < minSpeed)
+                {
+                    velocity = new Vector3();
+                }
+            }
+        }
+        
 
         
 
