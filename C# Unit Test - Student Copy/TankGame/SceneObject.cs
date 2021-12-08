@@ -10,6 +10,7 @@ namespace TankGame
 {
     public class SceneObject
     {
+        /// Reference to the parent object
         public SceneObject Parent
         {
             get => Parent;
@@ -22,23 +23,24 @@ namespace TankGame
                 Parent.Children.Add(this);
             }
         }
+        /// Reference to this game objects children
         public List<SceneObject> Children = new List<SceneObject>();
 
         /// GRAPHICS
-        public float Scale = 1;
-        public float Rotation = 0;
-        protected Vector3 offset = new Vector3();
-        protected Texture2D sprite;
+        public float Scale = 1;                     // Scale the sprite will be set to
+        public float Rotation = 0;                  // Rotation of the sprite
+        protected Vector3 offset = new Vector3();           // The visual offset from the position
+        protected Texture2D sprite;                 // Reference to the sprite image
 
         /// Positional Properties
-        protected Matrix3 localTransform = new Matrix3();
-        public Matrix3 globalTransform = new Matrix3();
+        protected Matrix3 localTransform = new Matrix3();           // The local position of this game object
+        public Matrix3 globalTransform = new Matrix3();             // The global position of this game object
 
         /// PHYSICS
-        protected Vector3 position = new Vector3(0, 0, 1);
-        protected Vector3 velocity = new Vector3();
-        protected float friction = 0.9f;
-        protected float minSpeed = 0.01f;
+        protected Vector3 position = new Vector3(0, 0, 1);          // Reference to the relative position of its parent
+        protected Vector3 velocity = new Vector3();                 // Current relative velocity to the parent
+        protected float friction = 0.9f;                            // Slow to stop
+        protected float minSpeed = 0.01f;                           // Min Speed before the object comes to a stop
 
         public Vector3 Position
         {
@@ -67,6 +69,7 @@ namespace TankGame
 
         /// UPDATE PROPERTIES
         private bool bIsDirty = false;
+        private float rotationShift = 0;
 
         
 
