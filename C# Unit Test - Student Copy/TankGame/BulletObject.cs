@@ -11,7 +11,8 @@ namespace TankGame
     {
         private static float movementSpeed = 100.0f;
 
-        public BulletObject(Vector3 position, float rotation, SceneObject ignoreParent) : base(position, Globals.DistanceDirectionToXY(movementSpeed, rotation), rotation + (float)Math.PI, Globals.Scene)
+
+        public BulletObject(Vector3 position, float rotation) : base(position, Globals.DistanceDirectionToXY(movementSpeed, rotation), rotation + (float)Math.PI, Globals.Scene)
         {
             sprite = Raylib_cs.Raylib.LoadTexture("bullet.png");                //Sets the sprite
             friction = 0;                                                       //No friction

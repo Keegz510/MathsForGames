@@ -54,7 +54,7 @@ namespace TankGame
 
         public void Fire()
         {
-            // TODO
+            turret.Fire();
         }
 
     }

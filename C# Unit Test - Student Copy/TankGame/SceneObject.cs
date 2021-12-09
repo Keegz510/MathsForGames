@@ -210,7 +210,7 @@ namespace TankGame
 
         public virtual void Update()
         {
-            foreach(var child in Children)
+            foreach(var child in Children.ToList())
             {
                 child.Update();
             }
