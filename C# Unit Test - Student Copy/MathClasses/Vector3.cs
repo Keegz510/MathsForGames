@@ -133,5 +133,10 @@ namespace MathClasses
                 x * vec.y - y * vec.x
             );
         }
+
+        public override string ToString()
+        {
+            return string.Format("X: {0}, Y: {1}, Z: {2}", x, y, z);
+        }
     }
 }

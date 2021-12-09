@@ -32,24 +32,25 @@ namespace TankGame
 
         public override void Update()
         {
+            Console.WriteLine(string.Format("X: {0}, Y: {1}", Position.x, Position.y));
             base.Update();
         }
 
-        public Vector3 Forward()
+        public void Forward()
         {
-            return accelaration = Globals.DistanceDirectionToXY(AccRate, GlobalRotation);
+            accelaration = Globals.DistanceDirectionToXY(AccRate, GlobalRotation);
         }
 
-        public Vector3 Backwards()
+        public void Backwards()
         {
-            return accelaration = Globals.DistanceDirectionToXY(DecRate, (GlobalRotation + (float)Math.PI));
+            accelaration = Globals.DistanceDirectionToXY(DecRate, (GlobalRotation + (float)Math.PI));
         }
 
-        public float TurnLeft() => RotationShift = -TurnSpeed;
-        public float TurnRight() => RotationShift = TurnSpeed;
+        public void TurnLeft() => RotationShift = -TurnSpeed;
+        public void TurnRight() => RotationShift = TurnSpeed;
 
-        public float TurretLeft() => turret.RotationShift = -TurretSpeed;
-        public float TurretRight() => turret.RotationShift = TurretSpeed;
+        public void TurretLeft() => turret.RotationShift = -TurretSpeed;
+        public void TurretRight() => turret.RotationShift = TurretSpeed;
 
         public void Fire()
         {

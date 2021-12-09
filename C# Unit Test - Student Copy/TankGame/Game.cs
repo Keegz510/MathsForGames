@@ -19,7 +19,7 @@ namespace TankGame
         public Game()
         {
             background = LoadTextureFromImage(dirt);
-            pc = new PlayerController(new TankObject(new Vector3(320, 475, 1), new Vector3(), -(float)Math.PI / 2, 0, Globals.Scene));
+            pc = new PlayerController(new TankObject(new Vector3(100, 100, 1), new Vector3(), -(float)Math.PI / 2, 0, Globals.Scene));
         }
 
         public void Init()

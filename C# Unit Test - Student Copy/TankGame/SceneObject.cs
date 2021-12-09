@@ -10,6 +10,7 @@ namespace TankGame
 {
     public class SceneObject
     {
+        protected string objectName;
         /// Reference to the parent object
         private SceneObject parent;
         public SceneObject Parent
@@ -44,10 +45,13 @@ namespace TankGame
         {
             get
             {
+                
                 return
                     new Matrix3(1, 0, 0, 0, 1, 0, Position.x, Position.y, 1) *
                     Globals.RotationMatrix2D(Rotation) *
                     new Matrix3(Scale, 0, 0, 0, Scale, 0, 0, 0, 1);
+
+                
             }
         }
         public float GlobalRotation
@@ -136,7 +140,7 @@ namespace TankGame
             Velocity += accelaration * Globals.DeltaTime;
             accelaration = new Vector3();
 
-            Position = Velocity * Globals.DeltaTime;
+            Position += Velocity * Globals.DeltaTime;
             Velocity *= (float)Math.Pow(1 - friction, Globals.DeltaTime);
 
             Rotation += rotationShift * Globals.DeltaTime;
@@ -150,8 +154,8 @@ namespace TankGame
 
         public void GlobalTransformUpdate()
         {
-            if (!bIsDirty)
-                return;
+           // if (!bIsDirty)
+             //   return;
 
             bIsDirty = false;
             if(Parent != null)
