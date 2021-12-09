@@ -6,11 +6,19 @@ using System.Threading.Tasks;
 using MathClasses;
 using Raylib_cs;
 using static Raylib_cs.Raylib;
+
+public struct BoundBoxSize
+{
+    public int Width;
+    public int Height;
+}
+
 namespace TankGame
 {
     public class SceneObject
     {
-        protected string objectName;
+        protected string tag = "";
+        public string Tag { get => tag; }
         /// Reference to the parent object
         private SceneObject parent;
         public SceneObject Parent
@@ -101,8 +109,6 @@ namespace TankGame
         public float RotationShift { set => rotationShift = value; }
         protected Vector3 accelaration = new Vector3();
 
-        
-
 
         public SceneObject()
         { }
@@ -154,8 +160,8 @@ namespace TankGame
 
         public void GlobalTransformUpdate()
         {
-           // if (!bIsDirty)
-             //   return;
+            if (!bIsDirty)
+                return;
 
             bIsDirty = false;
             if(Parent != null)
@@ -190,6 +196,9 @@ namespace TankGame
             }
         }
 
+        public bool hasCollision = false;
+        public BoxSize ColSize;
+
         public void Draw()
         {
 
@@ -206,11 +215,12 @@ namespace TankGame
             {
                 child.Draw();
             }
+
         }
 
         public virtual void Update()
         {
-            foreach(var child in Children.ToList())
+            foreach(var child in Children)
             {
                 child.Update();
             }

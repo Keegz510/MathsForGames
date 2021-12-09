@@ -18,6 +18,7 @@ namespace TankGame
             friction = 0;                                                       //No friction
             offset = new Vector3(-sprite.width / 2, -sprite.height / 2, 0);   //Sets the offset for the bullet (Centered)
             Scale = 1.0f;                                                         //Full scale
+            tag = "Bullet";
         }
     }
 }
