@@ -41,9 +41,6 @@ namespace TankGame
             AimPosition = Globals.PointOffsetDistDir(barrelLength, rotation);                         //Set the initial AimPosition
         }
 
-        public void Fire()
-        {
-            new BulletObject(AimPosition, GlobalRotation);
-        }
+        // TODO: Fire Weapon
     }
 }
