@@ -3,18 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using static Raylib_cs.Raylib;
 
-
 namespace TankGame
 {
     class TankProject
     {
         public static void Main()
         {
-            InitWindow(1600, 800, "AIE Graphical Test");
+            InitWindow(600, 600, "AIE Graphical Test");
             Game game = new Game();
             game.Init();
 
-            while(!WindowShouldClose())
+            while (!WindowShouldClose())
             {
                 game.Update();
             }

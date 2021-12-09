@@ -49,17 +49,17 @@ namespace TankGame
         protected Matrix3 localTransform = new Matrix3();           // The local position of this game object
         public Matrix3 GlobalTransform = new Matrix3();             // The global position of this game object
         // Returns an updated version of the localTransform
-        protected Matrix3 LocalTransform                                        
+        protected Matrix3 LocalTransform
         {
             get
             {
-                
+
                 return
                     new Matrix3(1, 0, 0, 0, 1, 0, Position.x, Position.y, 1) *
                     Globals.RotationMatrix2D(Rotation) *
                     new Matrix3(Scale, 0, 0, 0, Scale, 0, 0, 0, 1);
 
-                
+
             }
         }
         public float GlobalRotation
@@ -96,7 +96,7 @@ namespace TankGame
             set
             {
                 velocity = value;
-                if(velocity.Magnitude() < minSpeed)
+                if (velocity.Magnitude() < minSpeed)
                 {
                     velocity = new Vector3();
                 }
@@ -123,19 +123,19 @@ namespace TankGame
             Parent = parent;
 
             Globals.AllObjectsInScene.Add(this);
-            
+
         }
         public void MakeDirty()
         {
             if (bIsDirty) return;
 
             bIsDirty = true;
-            if(Parent != null)
+            if (Parent != null)
             {
                 Parent.MakeDirty();
             }
 
-            foreach(var child in Children)
+            foreach (var child in Children)
             {
                 child.MakeDirty();
             }
@@ -152,7 +152,7 @@ namespace TankGame
             Rotation += rotationShift * Globals.DeltaTime;
             rotationShift = 0;
 
-            foreach(var child in Children)
+            foreach (var child in Children)
             {
                 child.PhysicsUpdate();
             }
@@ -161,17 +161,17 @@ namespace TankGame
         public void GlobalTransformUpdate()
         {
             //if (!bIsDirty)
-              //  return;
+            //  return;
 
             bIsDirty = false;
-            if(Parent != null)
+            if (Parent != null)
             {
                 GlobalTransform = Parent.GlobalTransform * localTransform;
             }
 
-            if(Children.Count > 0)
+            if (Children.Count > 0)
             {
-                foreach(var child in Children)
+                foreach (var child in Children)
                 {
                     child.GlobalTransformUpdate();
                 }
@@ -180,7 +180,7 @@ namespace TankGame
 
         public void LocalTransformUpdate()
         {
-            if(!bIsDirty)
+            if (!bIsDirty)
             {
                 return;
             }
@@ -197,7 +197,7 @@ namespace TankGame
         }
 
         public bool hasCollision = false;
-        public BoxSize ColSize;
+        //public BoxSize ColSize;
 
         public void Draw()
         {
@@ -211,7 +211,7 @@ namespace TankGame
                 Color.WHITE
                 );
 
-            foreach(var child in Children)
+            foreach (var child in Children)
             {
                 child.Draw();
             }
@@ -220,7 +220,7 @@ namespace TankGame
 
         public virtual void Update()
         {
-            foreach(var child in Children)
+            foreach (var child in Children)
             {
                 child.Update();
             }

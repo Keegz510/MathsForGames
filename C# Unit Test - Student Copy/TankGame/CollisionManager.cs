@@ -18,7 +18,7 @@ namespace TankGame
 
         public void CheckCollisions()
         {
-            /*
+            
             foreach(var so in CollisionObjects.ToList())
             {
                 if (!so.hasCollision) continue;
@@ -38,7 +38,6 @@ namespace TankGame
                     }    
                 }
             }
-            */
         }
 
         
