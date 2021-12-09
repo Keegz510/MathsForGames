@@ -15,16 +15,20 @@ namespace TankGame
         Texture2D background;
 
         PlayerController pc;
+        CollisionManager collisionManager;
 
         public Game()
         {
             background = LoadTextureFromImage(dirt);
+            collisionManager = new CollisionManager();
+            collisionManager.CreateWindowBounds(600, 600);
             pc = new PlayerController(new TankObject(new Vector3(100, 100, 1), new Vector3(), -(float)Math.PI / 2, 0, Globals.Scene));
         }
 
         public void Init()
         {
             Globals.AllObjectsInScene.Add(Globals.Scene);
+            
         }
 
         public void Update()

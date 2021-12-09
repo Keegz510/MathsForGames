@@ -13,35 +13,41 @@ namespace TankGame
     }
     public class CollisionManager
     {
+        public static CollisionManager Instance;
 
         public List<SceneObject> CollisionObjects = new List<SceneObject>();
 
+        public CollisionManager()
+        {
+            Instance = this;
+        }
+
         public void CheckCollisions()
         {
-            
-            foreach(var so in CollisionObjects.ToList())
+
+            foreach (var so in CollisionObjects.ToList())
             {
                 if (!so.hasCollision) continue;
 
-                foreach(var so2 in CollisionObjects.ToList())
+                foreach (var so2 in CollisionObjects.ToList())
                 {
                     if (!so.hasCollision) continue;
                     if (so.GlobalTransform.m7 > so2.GlobalTransform.m7 && so.GlobalTransform.m7 < so2.GlobalTransform.m7 + so2.ColSize.Width)
                     {
-                        if(so.GlobalTransform.m8 > so2.GlobalTransform.m7 && so.GlobalTransform.m8 < so2.GlobalTransform.m8 + so2.ColSize.Height)
+                        if (so.GlobalTransform.m8 > so2.GlobalTransform.m7 && so.GlobalTransform.m8 < so2.GlobalTransform.m8 + so2.ColSize.Height)
                         {
-                            if(so.Tag == "Bullet")
+                            if (so.Tag == "Bullet")
                             {
                                 Globals.AllObjectsInScene.Remove(so);
                             }
                         }
-                    }    
+                    }
                 }
             }
         }
 
-        
+
     }
 
-    
+
 }

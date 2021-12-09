@@ -109,6 +109,8 @@ namespace TankGame
         public float RotationShift { set => rotationShift = value; }
         protected Vector3 accelaration = new Vector3();
 
+        public bool hasCollision = false;
+
 
         public SceneObject()
         { }
@@ -196,8 +198,6 @@ namespace TankGame
             }
         }
 
-        public bool hasCollision = false;
-        //public BoxSize ColSize;
 
         public void Draw()
         {
@@ -224,11 +224,23 @@ namespace TankGame
             {
                 child.Update();
             }
+
+            CollisionManager.Instance.CheckBoundsCollision(this);
+
+            foreach(var child in Children)
+            {
+                CollisionManager.Instance.CheckBoundsCollision(child);
+            }
         }
 
         private float GetDirectionTo(SceneObject so)
         {
             return (float)Math.Atan2(so.Position.y - Position.y, so.Position.x - Position.x) - (float)Math.PI / 2;
+        }
+
+        public void Destroy()
+        {
+            Globals.AllObjectsInScene.Remove(this);
         }
     }
 }
